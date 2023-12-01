@@ -76,8 +76,8 @@ for i, char in enumerate(input):
     else:
         houses2[pos2] = 1
         
-p1 = len(houses1.keys())
-p2 = len(houses2.keys())
+p1 = len(houses1)
+p2 = len(houses2)
 
 # ------------------- #
 
