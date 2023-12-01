@@ -42,8 +42,6 @@ def part2(data):
     for l in data:
         digits = []
 
-        print(l)
-
         for i in range(len(l)):
             line = l[i:]
 
@@ -58,8 +56,6 @@ def part2(data):
                     break
 
         sum += digits[0] * 10 + digits[-1]
-
-        print(digits)
 
     return sum
 
