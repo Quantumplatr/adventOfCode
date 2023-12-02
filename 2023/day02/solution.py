@@ -46,7 +46,6 @@ for game_str in input.split("\n"):
         
     total += min_colors["blue"] * min_colors["green"] * min_colors["red"]
         
-        
 p1 = sum(valid_games)
 p2 = total
 
