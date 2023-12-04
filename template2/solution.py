@@ -1,4 +1,5 @@
 import sys
+import re
 from functools import reduce
 
 input = open(sys.argv[1]).read().strip()
