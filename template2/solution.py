@@ -20,4 +20,4 @@ print("Part 2:", p2)
 
 to_copy = p1 if p2 == 0 else p2
 pyperclip.copy(to_copy)
-print(f"Copied {"P1" if p2 == 0 else "P2"}: \"{to_copy}\"")
+print(f"Copied {'P1' if p2 == 0 else 'P2'}: \"{to_copy}\"")
