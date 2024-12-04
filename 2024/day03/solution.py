@@ -30,10 +30,15 @@ p2 = 0
 # Get all instances of "mul(<number>,<number>)"
 muls = re.findall(r"(mul\(\d+,\d+\))", input)
 
+# - Shorter Code - #
+pairs = re.findall(r"(mul\((\d+),(\d+)\))", input)
+p1 = sum([int(pair[1]) * int(pair[2]) for pair in pairs])
+
+# - Original Code - #
 # Calculate sum of a*b for each a,b pair
-for mul in muls:
-    a, b = re.findall(r"(\d+)", mul)
-    p1 += int(a) * int(b)
+# for mul in muls:
+#     a, b = re.findall(r"(\d+)", mul)
+#     p1 += int(a) * int(b)
 
 # Do the same as above but only if there was a `do()` or `start of line`
 # more recent than a `don't()`
@@ -57,9 +62,7 @@ while i < len(input):
         match = re.match(r"^mul\((\d+),(\d+)\)", curr)
         if match:
             a,b = match.group(1,2)
-
-            if mul:
-                p2 += int(a) * int(b)
+            p2 += int(a) * int(b)
 
     i += 1
 
