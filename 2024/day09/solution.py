@@ -13,6 +13,9 @@ import pyperclip
 # - Making the fancy print earlier might've been nice
 # - Didn't super rush today but I feel like that's okay with it feeling
 #   like an intricate problem
+#
+# - Could've also done O(n) for P2 apparently. Some memoization or something
+#   to keep track of the gaps and chunks. Should look into it
 
 # TODO: cleanup and comment
 
