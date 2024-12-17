@@ -133,7 +133,7 @@ def run(operations):
 
         op = operations[pointer]
         input = operations[pointer + 1]
-        print(ops[op].__name__, input)
+        # print(ops[op].__name__, input)
         res = ops[op](input)
         if res is not None:
             output.append(res)
@@ -165,13 +165,68 @@ p1 = ",".join([str(n) for n in run(operations)])
 print(p1)
 
 
+def base_change(n):
+    o = 0
+    for i, d in enumerate(n):
+        o += d * pow(8, i)
+
+    return o
+
+
 def test(A):
     # return (((A % 8) ^ 5 ^ 6) ^ (A >> ((A % 8) ^ 5))) % 8
     return (((A % 8) ^ 3) ^ (A >> ((A % 8) ^ 5))) % 8
 
 
-for i in range(100):
-    print(i, test(i))
+def find(digits):
+    global a
+    global b
+    global c
+    global pointer
+    if len(digits) == len(operations):
+        return digits
+    so_far = 0
+    for i, d in enumerate(digits):
+        so_far += d * pow(8, i)
+
+    digit = len(operations) - 1 - len(digits)
+
+    correct = operations[digit]
+    potential = []
+    print(digits, base_change(digits), correct)
+    for i in range(8):
+        a = base_change([i] + digits)
+        b = 0
+        c = 0
+        pointer = 0
+        output = run(operations)
+
+        val = test(so_far * 8 + i)
+        print(a, output, val)
+        if val == correct:
+            print("found")
+            potential.append(i)
+
+    if len(potential) == 0:
+        return None
+
+    for p in potential:
+        new_digits = [p] + digits
+        result = find(new_digits)
+        if result is not None:
+            return result
+
+    return None
+
+
+digits = find([])
+p2 = base_change(digits)
+print("want", operations)
+a = p2
+b = 0
+c = 0
+print("res", run(operations))
+print(p2)
 
 exit()
 
